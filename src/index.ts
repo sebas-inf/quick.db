@@ -401,7 +401,7 @@ export class QuickDB<D = any> {
             );
         }
 
-        if (key.includes(".")) {
+        if (key.includes(".") && !this.normalKeys) {
             const keySplit = key.split(".");
             const obj = (await this.get<any>(keySplit[0])) ?? {};
             unset(obj, keySplit.slice(1).join("."));
